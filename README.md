@@ -25,7 +25,7 @@ My first thoughts after looking at the dataset made me think that region and typ
     * Nulls were valuable:
         * Nulls were in `side_a_2nd`, `side_b_2nd`, and `territory_name`
             * `side_a_2nd` and `side_b_2nd` were encoded to a `0` or `1` depending if they had an ally or not
-            * `territory_name` nulls were changed to "government" since null values were indicating there was no territorial conflict and that it was internal govermental conflict
+            * `territory_name` nulls were changed to "government" since null values were indicating there was no territorial conflict and that it was a govermental conflict
     * There were an initial 2568 rows
         * The total number of rows was reduced to 294 because there were entries for each "episode" of the war (often on a yearly basis) and I just use the initial entry to predict the `time_to_conflict`
 
@@ -40,27 +40,40 @@ My first thoughts after looking at the dataset made me think that region and typ
        * Is internet service causing churn?
        * Is no online security causing churn?
       
-* Develop a model to predict if a customer will churn or not
-   * Use drivers identified in explore to build predictive models of different types
+* Develop a model to predict the `time_to_conflict`
+   * Use drivers identified in explore to build predictive models
+       * Decision Tree
+       * KNN
+       * Random Forest
+       * Linear Regression
    * Evaluate models on train and validate data
-   * Select the best model based on highest accuracy
-   * Evaluate the best model on test data
+   * Select the best model based on highest accuracy and difference between in sample and out of sample data
+   * Test the best model on test data
  
 * Draw conclusions
 
 # Data Dictionary:
 
+* The description of the data can be found in the Data Codebook located here:
+    * https://ucdp.uu.se/downloads/ucdpprio/ucdp-prio-acd-221.pdf
+
+
 | Feature | Definition |
 |:--------|:-----------|
-|gender| Male or Female, gender of the customer|
-|senior_citizen| 0 or 1, wether the customer is a senior citizen or not|
-|partner| Yes or No, wether the customer has a partner or not|
-|dependents| Yes or No, wether the customer has dependents or not|
-|tenure| how long the customer has been with Telco|
-|phone_service| Yes or No, wether the customer has phone service or not|
-|mutiple_lines| Yes or No, wether the customer has multiple lines or not|
-|online_security| Yes or No, wether the customer has online security or not|
-|online_backup| Yes or No, wether the customer has online backup or not|
+|conflict_id| The unique identifier of the conflict|
+|location| The name of the country/countries whose String government(s) has a primary claim to the incompatibility. Note that this is not necessarily the geographical location of the conflict.|
+|side_a| The name of the country/countries of Side A in a conflict. Always the government side in intrastate conflicts. Note that this is a primary party to the conflict.|
+|side_a_id| The unique identifier of the actor on side A. Note that in contrast with older versions of UCDP datasets, this variable is NO LONGER the Gleditsch and Ward state identifier (GWcode or GWNo). Use the gwno_a variable instead.|
+|side_a_2nd| side_a_2nd lists all states that enter a conflict with troops to actively support side A. By definition, only independent states can be a secondary party in conflict. A secondary warring party on side A shares the position in the incompatibility with Side A in the conflict.
+side_a_2nd does not need to meet the 25 battle-related deaths criterion to be included in the dataset; an active troop participation is enough. Comma separated if multiple.|
+|side_b| Identifying the opposition actor or country/countries of side B in the conflict. In an intrastate conflict, this includes a military opposition organization. Note that this is a primary party to the conflict. Comma separated if multiple.|
+|side_b_id| The identifier of each of the actors on side B in the
+conflict. Note that in contrast with older versions of UCDP datasets, this variable is NO LONGER the Gleditsch and Ward state identifier (GWcode or GWNo) if the conflict is interstate and Side B represents a country. Use the gwno_b variable instead. If more than one opposition organization or state is involved in a conflict, this is a comma-separated list of values.|
+|side_b_2nd| side_b_2nd lists all states that enter a conflict with troops to actively support side B. By definition, only independent states can be a secondary party in conflict. A secondary warring party on side B shares the position in the incompatibility with Side B in the conflict. Side_b_2nd does not need to meet the 25 battle-related deaths criterion to be included in the dataset; an active troop participation is enough. Note that when there is more than one opposition organization listed in an intrastate conflict, the dataset does not provide information on which of these groups the state coded as Side B Secondary is supporting. Comma separated if multiple.|
+|incompatibility| The main conflict issue identified per the UCDP definitions:
+1= Incompatibility about territory
+2= Incompatibility about government
+3= Incompatibility about government AND territory|
 |device_protection| Yes or No, wether the customer has device_protection or not|
 |tech_support| Yes or No, wether the customer has tech_support or not|
 |streaming_tv| Yes or No, wether the customer has tv streaming or not|
