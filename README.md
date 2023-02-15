@@ -46,9 +46,9 @@ My first thoughts after looking at the dataset made me think that region and typ
         * `start_date` intiger 0 or 1, 0 if before 2000 and 1 if after 2000
         * `time_to_conflict` 1= less than or equal to 30 days, 2= between 30 days and 1 year, 3= longer than a year
     * Dummies were encoded for:
-        * `location`, `side_a`, `side_b`, `territory_name`, `type_of_conflict`, `region`, and `incompatibility`
+        * `location`, `side_a`, `side_b`, `start_date`, `type_of_conflict`, `region`, `time_to_conflict`, and `incompatibility`
     * Dropped columns:
-        * `start_date` and `start_date2`
+        * `territory_name` and `start_date2`
       
 * Develop a model to predict the `time_to_conflict`
    * Use drivers identified in explore to build predictive models
