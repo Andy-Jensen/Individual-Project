@@ -98,6 +98,7 @@ My first thoughts after looking at the dataset made me think that region and typ
 |gwno_loc| The Gleditsch and Ward country codes of the incompatibility. Comma separated if multiple.|
 |region| The region of the incompatibility: 1 = Europe (GWNo: 200-399) 2= Middle East (GWNo: 630-699) 3= Asia (GWNo: 700-999) 4= Africa (GWNo: 400-626) 5= Americas (GWNo: 2-199).|
 |version| The version of the dataset: 22.1|
+|time_to_conflict| The difference in days between `start_date` and `start_date2` in days.|
 
 # Steps to Reproduce
 1. Clone this repo
