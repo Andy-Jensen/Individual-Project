@@ -19,6 +19,7 @@ My first thoughts after looking at the dataset made me think that `region` and `
 
 * Acquire the data from "https://ucdp.uu.se/downloads/index.html#armedconflict"
   * "UCDP/PRIO Armed Conflict Dataset version 22.1"
+  * From Uppsala University in Sweden. Citation is at the bottom of the ReadMe.
 
 * Data prep for exploration:
     * Unnecessary columns were dropped
