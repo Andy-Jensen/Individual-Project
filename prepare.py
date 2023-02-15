@@ -17,7 +17,8 @@ def explore_conflict():
     conflict['start_date']=pd.to_datetime(conflict['start_date'])
     conflict['start_date2']=pd.to_datetime(conflict['start_date2'])
     conflict['time_to_conflict']= conflict['start_date2'].subtract(conflict['start_date'])
-    conflict['time_to_conflict']=(conflict['time_to_conflict']/ np.timedelta64(1, 'D')).astype(int)
+    conflict['time_to_conflict']=(conflict['time_to_conflict']/ np.timedelta64(1, 'D')).astype('int')
+    
     
     clean = pd.DataFrame(columns=conflict.columns)
     unique = list(conflict['conflict_id'].unique())
@@ -44,6 +45,7 @@ def explore_conflict():
     for i, n in enumerate(clean['territory_name']):
         if pd.isna(n):
             clean.at[i, 'territory_name'] = 'Government'
+    clean['time_to_conflict']=clean['time_to_conflict'].astype('int')
     return clean
 
 def tts(df, stratify=None):
