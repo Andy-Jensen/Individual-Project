@@ -6,11 +6,14 @@ Life is the most precious thing on the planet. Parents raise children who then b
 # Project Goals:
 * Run an end to end data science project
 * Build a model that will accurately predict the time until a minimum of 25 lives are lost (time_to_conflict)
-* Explore and discover drivers of time_to_conflict
+* Explore and discover drivers of `time_to_conflict`
 * Accumulate and deliver all information in a final report
 
+# Executive Summary:
+Through the course of this project, I was able to accurately predict the `time_to_conflict`. There were drivers identified such as the Asia `region` having a significantlly longer `time_to_conflict` and internationalized intrastate conflicts having a significantly shorter `time_to_conflict`. That can be interpreted as the more parties involved the quicker the conflict can escalate. To any potential stakeholders I would recommend using this model as a supplement to predict conflict as situations develop and should not be solely relied upon.
+
 # Initial Hypothesis:
-My first thoughts after looking at the dataset made me think that region and type_of_conflict were going to be the most significant drivers.
+My first thoughts after looking at the dataset made me think that `region` and `type_of_conflict` were going to be the most significant drivers.
 
 # Project Plan:
 
@@ -105,3 +108,10 @@ My first thoughts after looking at the dataset made me think that region and typ
 2. Use the function from prepare to prepare and obtain the data from the website
 3. Run the explore and modeling notebook
 4. Run final report notebook
+
+
+# Citation:
+Thanks to the following for generating this dataset!
+* Davies, Shawn, Therese Pettersson & Magnus Öberg (2022). Organized violence 1989-2021 and drone warfare. Journal of Peace Research 59(4).
+
+* Gleditsch, Nils Petter, Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg, and Håvard Strand (2002) Armed Conflict 1946-2001: A New Dataset. Journal of Peace Research 39(5).
