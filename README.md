@@ -69,22 +69,28 @@ My first thoughts after looking at the dataset made me think that region and typ
 |side_b_id| The identifier of each of the actors on side B in the conflict. Note that in contrast with older versions of UCDP datasets, this variable is NO LONGER the Gleditsch and Ward state identifier (GWcode or GWNo) if the conflict is interstate and Side B represents a country. Use the gwno_b variable instead. If more than one opposition organization or state is involved in a conflict, this is a comma-separated list of values.|
 |side_b_2nd| side_b_2nd lists all states that enter a conflict with troops to actively support side B. By definition, only independent states can be a secondary party in conflict. A secondary warring party on side B shares the position in the incompatibility with Side B in the conflict. Side_b_2nd does not need to meet the 25 battle-related deaths criterion to be included in the dataset; an active troop participation is enough. Note that when there is more than one opposition organization listed in an intrastate conflict, the dataset does not provide information on which of these groups the state coded as Side B Secondary is supporting. Comma separated if multiple.|
 |incompatibility| The main conflict issue identified per the UCDP definitions: 1= Incompatibility about territory 2= Incompatibility about government 3= Incompatibility about government AND territory|
-|device_protection| Yes or No, wether the customer has device_protection or not|
-|tech_support| Yes or No, wether the customer has tech_support or not|
-|streaming_tv| Yes or No, wether the customer has tv streaming or not|
-|streaming_movies| Yes or No, wether the customer has movie streaming or not|
-|paperless_billing| Yes or No, wether the customer has enrolled in paperless billing or not|
-|monthly_charges| how much each customer pays per month|
-|total_charges| how much each customer has payed in their tenure|
-|churn| Yes or No, wether the customer has left the company or not|
-|contract_type| current contract length of each customer|
-|internet_service_type| the type of internet each customer is paying for|
-|payment_type| how each customer is sending their payment to Telco|
-|signup_date| date of each customers enrollment with Telco|
-|churn_month| month that the customer left Telco. 'None' if the customer is still enrolled|
+|territory_name| The name of the territory over which the conflict is fought, provided that the incompatibility is over territory. In case the two sides use different names for the disputed territory, the name listed is the one used by the opposition organisation. One reason for this is that this is most often the name that the general public recognises. Another reason is that there are cases where the disputed territories do not have an official name.|
+|year| The year of observation (1946-2021).|
+|intensity_level| The intensity level in the conflict per calendar year. The intensity variable is coded in two categories: 1= Minor: between 25 and 999 battle-related deaths in a given year. 2= War: at least 1,000 battle-related deaths in a given year.|
+|cumulative_intensity| This variable takes into account the temporal dimension of the conflict. It is a dummy variable that codes whether the conflict since the onset has exceeded 1,000 battle-related deaths. For conflicts with a history prior to 1946, it does not take into account the fatalities incurred in preceding years. A conflict is coded as 0 as long as it has not over time resulted in more than 1,000 battle-related deaths. Once a conflict reaches this threshold, it is coded as 1.|
+|type_of_conflict| One of the following four types of conflict: 1 = extrasystemic (between a state and a non-state group outside its own territory, where the government side is fighting to retain control of a territory outside the state system) 2 = interstate (both sides are states in the Gleditsch and Ward membership system). 3 = intrastate (side A is always a government; side B is always one or more rebel groups; there is no involvement of foreign governments with troops, i.e. there is no side_a_2nd or side_b_2nd coded) 4 = internationalized intrastate (side A is always a government; side B is always one or more rebel groups; there is involvement of foreign governments with troops, i.e. there is at least ONE side_a_2nd or side_b_2nd coded)|
+|start_date| The date, as precise as possible, of the first battle-related death in the conflict. The date is set after the conflict fulfils all criteria required in the definition of an armed conflict, except for the number of deaths.|
+|start_prec| The level of precision for the initial start date.|
+|start_date2| The date, as precise as possible, when a given episode of conflict activity reached 25 battle-related deaths in a year. Thus, for each episode of a conflict, a new Startdate2 is coded. In case precise information is lacking, Startdate2 is by default set to 31 December. An episode is defined as continuous conflict activity. Consequently, a new episode is coded whenever a conflict restarts after one or more year(s) of inactivity.|
+|start_prec2| The level of precision for start_date2.|
+|ep_end| A dummy variable that codes whether the conflict is inactive the following year and an episode of the conflict thus ends. If the conflict is inactive the following year(s), this variable is coded as 1. If not, a 0 is coded. For the latest year in the dataset, it is unknown whether the conflict will be recorded as active or inactive in the following year, and the variable is always given the code 0.|
+|ep_end_date| This variable is only coded in years where ep_end has the value 1. If a conflict year is followed by at least one year of conflict inactivity, the ep_end_date variable lists, as precise as possible, the date when conflict activity ended.|
+|ep_end_prec| The level of precision for episode end.|
+|gwno_a| The Gleditsch and Ward country codes of side_a. Comma separated if multiple.|
+|gwno_a_2nd| The Gleditsch and Ward country codes of side_a_2nd. Comma separated if multiple.|
+|gwno_b| The Gleditsch and Ward country codes of side_b. Comma separated if multiple.|
+|gwno_b_2nd| The Gleditsch and Ward country codes of side_b. Comma separated if multiple.|
+|gwno_loc| The Gleditsch and Ward country codes of the incompatibility. Comma separated if multiple.|
+|region| The region of the incompatibility: 1 = Europe (GWNo: 200-399) 2= Middle East (GWNo: 630-699) 3= Asia (GWNo: 700-999) 4= Africa (GWNo: 400-626) 5= Americas (GWNo: 2-199).|
+|version| The version of the dataset: 22.1|
 
 # Steps to Reproduce
 1. Clone this repo
-2. Use the function from acquire and prepare to obtain the data from the Codeup SQL server using the programmed query
+2. Use the function from prepare to prepare and obtain the data from the website
 3. Run the explore and modeling notebook
 4. Run final report notebook
