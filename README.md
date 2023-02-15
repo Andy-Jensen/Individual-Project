@@ -31,14 +31,24 @@ My first thoughts after looking at the dataset made me think that region and typ
 
 * Separate into train, validate, and test datasets
  
-* Explore the train data in search of drivers of churn
+* Explore the train data in search of drivers of time_to_conflict
    * Answer the following initial questions
-       * Does higher monthly charges cause churn?
-       * Does wether customers have dependents cause them to churn more or less?
-       * Does having DSL cause customers to churn more or less?
-       * Are customers with a lower tenure more or less likely to churn?
-       * Is internet service causing churn?
-       * Is no online security causing churn?
+       * Is the average time to conflict for countries in Asia significantlly higher compared to all other regions?
+       * Is the average time to conflict for countries in Africa and the Middle East significantlly lower than the average time to conflict for all regions?
+       * Is the average time to conflict for countries that have an intrastate conflict over government significantlly greater than the average time to conflict for countries that have an interstate conflict over territory?
+       * Is the average time to conflict for countries that have an internationalized intrastate conflict significantly less than the average time to conflict for all conflicts in the dataset?
+       
+* Prep the data for modeling:
+    * encode columns to reduce the number of catagories:
+        * `location` intiger 0-10 for top ten locations and other
+        * `side_a` intiger 0-10 for top ten side_a's and other
+        * `side_b` intiger 0-20 for top twenty side_b's and other
+        * `start_date` intiger 0 or 1, 0 if before 2000 and 1 if after 2000
+        * `time_to_conflict` 1= less than or equal to 30 days, 2= between 30 days and 1 year, 3= longer than a year
+    * Dummies were encoded for:
+        * `location`, `side_a`, `side_b`, `territory_name`, `type_of_conflict`, `region`, and `incompatibility`
+    * Dropped columns:
+        * `start_date` and `start_date2`
       
 * Develop a model to predict the `time_to_conflict`
    * Use drivers identified in explore to build predictive models
